@@ -16,3 +16,5 @@ class Evento(models.Model):
     def __str__(self):#sempre q alguem chamar o objeto título, será trazido o nome do título,
         return self.titulo #mesmo q ñ seja clicado p/ acessar algum campo do evento (evento object ñ mais)
 
+    def get_data_evento(self): #é possível criar uma função aqui no models e chamá-la no html
+        return self.data_evento.strftime('%d/%m/%Y %H:%M Hrs')
