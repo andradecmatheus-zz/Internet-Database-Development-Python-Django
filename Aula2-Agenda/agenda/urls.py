@@ -21,5 +21,8 @@ from django.views.generic import RedirectView #com ela é possível redirecionar
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('agenda/', views.lista_eventos),
-    path('', RedirectView.as_view(url='/agenda')) # se for usar sem o RedirectView -> views.index
+    path('', RedirectView.as_view(url='/agenda')), # se for usar sem o RedirectView -> views.index
+    path('login/', views.login_user),
+    path('login/submit', views.submit_login),
+    path('logout/', views.logout_user)   #logout_user pq já tem uma func do django com o nome de logout
 ]

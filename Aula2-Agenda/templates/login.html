@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Agenda</title>
+</head>
+<body>
+    <h1>Login</h1>
+
+    <form action="submit" method="POST"> {% csrf_token %} <!--a action vai concatenar a url /login/submit-->
+        <div align="center">
+            <label>Usuário:</label>
+            <input type="text" name="username">
+            <label>Password:</label>
+            <input type="password" name="password">
+            <button type="submit">Entrar</button>
+            <!--toda a div é colocada dentro de um form, por causa do button submit-->
+        </div>
+    </form>
+
+    {% for message in messages %}
+        <div align="center">
+            <strong>Erro: </strong>{{ message }}
+        </div>
+    {% endfor %}
+</body>
+</html>
+
+ <!--sempre qnd existir um form q não seja o method do tipo GET, tem q ter o {% csrf_token %} -->
