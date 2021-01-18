@@ -47,6 +47,10 @@ def evento(request):
     dados = {}
     if id_evento:
         dados['evento'] = Evento.objects.get(id=id_evento)
+        try:
+            dados['evento'] = Evento.objects.get(id=id_evento)
+        except Exception:
+            raise Http404()
     return render(request, 'evento.html', dados)
 
 @login_required(login_url='/login/')
@@ -91,3 +95,15 @@ def json_lista_evento(request, id_usuario):
     usuario = User.objects.get(id=id_usuario)
     evento = Evento.objects.filter(usuario=usuario).values('id', 'titulo')
     return JsonResponse(list(evento), safe=False) #precisa do safe pq está sendo passado uma Lista e ñ um dicionário
+
+
+def lista_eventos_historico(request):
+    usuario = request.user
+    data_atual = datetime.now()
+    evento = Evento.objects.filter(usuario=usuario,
+                                   data_evento__lt=data_atual)
+    dados = {'eventos':evento}
+    return render(request, 'historico.html', dados)
+
+def handler404(request, exception):
+    return render(request, '404.html')
