@@ -1,29 +1,45 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Agenda</title>
-</head>
-<body>
-    <h1>Login</h1>
+    <meta charset="utg-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <form action="submit" method="POST"> {% csrf_token %} <!--a action vai concatenar a url /login/submit-->
-        <div align="center">
-            <label>Usuário:</label>
-            <input type="text" name="username">
-            <label>Password:</label>
-            <input type="password" name="password">
-            <button type="submit">Entrar</button>
-            <!--toda a div é colocada dentro de um form, por causa do button submit-->
-        </div>
+    <link rel="icon" href="{% static 'img/agenda.png' %}">
+
+    <title>Agenda</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'dist/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/signin.css' %}" rel="stylesheet">
+
+  </head>
+
+  <body class="text-center">
+    <form class="form-signin" action="submit" method="POST"> {% csrf_token %}
+      <img class="mb-4" src="{% static 'img/agenda.png' %}" alt="agenda imagem" width="72" height="72">
+      <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+      <label for="inputText" class="sr-only">Usuário</label>
+      <input type="text" id="inputText" class="form-control" placeholder="Usuário" name="username" required autofocus>
+      <label for="inputPassword" class="sr-only">Senha</label>
+      <input type="password" id="inputPassword" class="form-control" placeholder="Senha" name="password" required >
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+
+      {% for message in messages %}
+      <div align="bottom">
+            <strong>Erro: </strong>{{ message }}
+      </div>
+      {% endfor %}
+
+      <p class="mt-5 mb-3 text-muted"> &copy; 2021 por Matheus C. Andrade <br> </p>
+
     </form>
 
-    {% for message in messages %}
-        <div align="center">
-            <strong>Erro: </strong>{{ message }}
-        </div>
-    {% endfor %}
-</body>
-</html>
 
- <!--sempre qnd existir um form q não seja o method do tipo GET, tem q ter o {% csrf_token %} -->
+
+  </body>
+</html>
