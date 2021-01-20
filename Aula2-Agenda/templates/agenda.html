@@ -1,29 +1,50 @@
 {% extends "model-page.html" %} #extentendo o conteúdo do model-page.html
 
 {% block content %}
-    <h2>Agendamentos</h2>
-    <a href="evento/">
-        <button type="button">Novo Evento</button>
-    </a>
-    <a href="historico/">
-        <button type="button">Histórico</button>
-    </a>
-    <ul style="font-size: 18px">
+
+{% load static %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<link href="{% static 'css/agenda.css' %}" rel="stylesheet">
+
+
+<div class="center-column">
+
+    <div align="center">
+        <a href="evento/">
+            <button class="btn btn-sm btn-info">Novo Evento</button>
+        </a>
+        <a href="historico/">
+            <button class="btn btn-sm btn-info">Histórico</button>
+        </a>
+    </div>
+
+    <div class="todo-list" >
         {% for evento in eventos %}
-            <li>
-                <div {% if evento.get_evento_atrasado %}
-                        style="color:red"
-                     {% endif %}
-                     {% if evento.get_evento_1h_para_iniciar %}
-                        style="color:#CCCC00;"
-                     {% endif %}>
-                    {{ evento.titulo }} - {{ evento.get_data_evento }}
-                    ( <a href="evento/?id={{ evento.id }}">Editar</a>
-                    / <a href="evento/delete/{{ evento.id }}/">Excluir</a> )
-                </div>
-            </li>
+        <div class="item-row"
+             {% if evento.get_evento_atrasado %}
+                style="color:red"
+             {% elif evento.get_evento_1h_para_iniciar %}
+                style="color:#008000;"
+             {% else %}
+                style="color:#000000"
+             {% endif %}  >
+                {{ evento.titulo }} - {{ evento.get_data_evento }}
+                <a class="btn btn-sm btn-danger"
+                   href="evento/delete/{{ evento.id }}/"
+                   style="float: right; ">Excluir</a>
+                <a class="btn btn-sm btn-info"
+                   href="evento/?id={{ evento.id }}"
+                   style="float: right;margin-right:5px">Editar</a>
+
+        </div>
         {% endfor %}
-    </ul>
+
+    </div>
+
+</div>
+
 {% endblock %}
 
-#estou dizendo que todo o contéudo faz parte do bloco content
+
+{% include "model-footer.html" %}

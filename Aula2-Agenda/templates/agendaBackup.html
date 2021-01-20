@@ -1,0 +1,29 @@
+{% extends "model-page.html" %} #extentendo o conteúdo do model-page.html
+
+{% block content %}
+    <h2>Agendamentos</h2>
+    <a href="evento/">
+        <button type="button">Novo Evento</button>
+    </a>
+    <a href="historico/">
+        <button type="button">Histórico</button>
+    </a>
+    <ul style="font-size: 18px">
+        {% for evento in eventos %}
+            <li>
+                <div {% if evento.get_evento_atrasado %}
+                        style="color:red"
+                     {% endif %}
+                     {% if evento.get_evento_1h_para_iniciar %}
+                        style="color:#CCCC00;"
+                     {% endif %}>
+                    {{ evento.titulo }} - {{ evento.get_data_evento }}
+                    ( <a href="evento/?id={{ evento.id }}">Editar</a>
+                    / <a href="evento/delete/{{ evento.id }}/">Excluir</a> )
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+#estou dizendo que todo o contéudo faz parte do bloco content
