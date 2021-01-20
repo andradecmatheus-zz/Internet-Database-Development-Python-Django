@@ -13,6 +13,7 @@ class Evento(models.Model):
 
     class Meta:
         db_table = 'evento' #exige q o nome da tabela será evento)
+        ordering = ['data_evento']
 
     def __str__(self):#sempre q alguem chamar o objeto título, será trazido o nome do título,
         return self.titulo #mesmo q ñ seja clicado p/ acessar algum campo do evento (evento object ñ mais)

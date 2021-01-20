@@ -29,13 +29,13 @@
              {% else %}
                 style="color:#000000"
              {% endif %}  >
-                {{ evento.titulo }} - {{ evento.get_data_evento }}
+                {{ evento.get_data_evento }} - {{  evento.titulo}}
                 <a class="btn btn-sm btn-danger"
                    href="evento/delete/{{ evento.id }}/"
-                   style="float: right; ">Excluir</a>
+                   style="float: right">Excluir</a>
                 <a class="btn btn-sm btn-info"
                    href="evento/?id={{ evento.id }}"
-                   style="float: right;margin-right:5px">Editar</a>
+                   style="float: right; margin-right:5px">Editar</a>
 
         </div>
         {% endfor %}
