@@ -1,19 +1,38 @@
 {% extends "model-page.html" %}
 
 {% block content %}
-    <h2>Histórico</h2>
-    <a href="../">
-        <button type="button">Voltar</button>
-    </a>
-    <ul style="font-size: 18px">
+{% load static %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<link href="{% static 'css/agenda.css' %}" rel="stylesheet">
+
+<div class="center-column">
+
+    <div  align="center" style="font-size: 20px; font-weight: bold;">HISTÓRICO: <br> </div>
+
+    <div class="todo-list" >
         {% for evento in eventos %}
-            <li>
-                <div>
-                    {{ evento.titulo }} - {{ evento.get_data_evento }}
-                    ( <a href="../evento/?id={{ evento.id }}">Editar</a>
-                    / <a href="../evento/delete/{{ evento.id }}/">Excluir</a> )
-                </div>
-            </li>
+        <div class="item-row" style="color:#000000">
+                {{ evento.get_data_evento }} - {{  evento.titulo}}
+                <a class="btn btn-sm btn-danger"
+                   href="evento/delete/{{ evento.id }}/"
+                   style="float: right">Excluir</a>
+
+
+        </div>
         {% endfor %}
-    </ul>
+
+    </div>
+    <div align="right"> <br>
+        <a href="../">
+            <button class="btn btn-sm btn-info">Voltar</button>
+        </a>
+    </div>
+
+</div>
+
+
 {% endblock %}
+
+
+{% include "model-footer.html" %}
