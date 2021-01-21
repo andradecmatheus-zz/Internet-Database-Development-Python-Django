@@ -5,7 +5,7 @@
 <h2 align="center">
 A To-do webapp which does login; it adds new tasks, edit or remove them; it shows the past tasks.
 </h2>
-
+<br>
 
 ### :books: Learning
 
@@ -14,12 +14,13 @@ A To-do webapp which does login; it adds new tasks, edit or remove them; it show
   - How to use bootstrap with Django.
   - How to manipulate static files with Django.
 
+<br>
 
 ### :small_orange_diamond: Customizing
   The original project had just the backend, so I created:
   1. Answers of the last activity: next events in 1h turned in green; 404 return covering all URLs; new event history view. 
   2. Template for all the pages (login, agenda, historico);
-
+<br>
 
 ### Useful links <br>
 [Teacher's github contains more details](https://github.com/rafegal/agenda) <br>
