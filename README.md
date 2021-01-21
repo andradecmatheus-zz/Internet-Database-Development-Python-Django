@@ -9,7 +9,6 @@ A To-do webapp which does login; it adds new tasks, edit or remove them; it show
 <p align="center">
   <img alt="Agenda" src="agenda.gif" width="100%">
 </p>
-<br>
 
 ### :books: Learning
 
