@@ -5,6 +5,10 @@
 <h2 align="center">
 A To-do webapp which does login; it adds new tasks, edit or remove them; it shows the past tasks.
 </h2>
+
+<p align="center">
+  <img alt="Agenda" src="agenda.gif" width="100%">
+</p>
 <br>
 
 ### :books: Learning
